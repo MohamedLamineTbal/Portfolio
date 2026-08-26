@@ -13,10 +13,17 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 32)
     const sections = navItems
       .map(({ href }) => document.querySelector(href))
       .filter(Boolean)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 32)
+
+      const firstSectionTop = sections[0]?.getBoundingClientRect().top
+      const isAboveContentSections = firstSectionTop > window.innerHeight * 0.36
+
+      if (isAboveContentSections) setActiveSection('')
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -31,9 +38,11 @@ function NavBar() {
     handleScroll()
     sections.forEach((section) => observer.observe(section))
     window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
       observer.disconnect()
     }
   }, [])

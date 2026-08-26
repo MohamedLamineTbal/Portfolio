@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Cog } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData.js'
 import AboutProjects from './AboutProjects.jsx'
 
@@ -8,25 +9,43 @@ function ProjectPreview({ type }) {
   return (
     <div className={`project-preview preview--${type}`} aria-hidden="true">
       <div className="preview-frame">
-        <span className="preview-kicker">
-          {type === 'payment' ? 'RELAY / PAYMENTS' : `SYSTEM / 0${type.length}`}
-        </span>
+        {type !== 'agent' && type !== 'payment' && (
+          <span className="preview-kicker">
+            {`SYSTEM / 0${type.length}`}
+          </span>
+        )}
+
+        {type === 'agent' && (
+          <div className="erp-gear-mark">
+            <Cog strokeWidth={1.15} />
+            <span>ERP</span>
+          </div>
+        )}
 
         {type === 'payment' && (
-          <div className="payment-ui">
-            <div className="payment-summary">
-              <span>Processed</span>
-              <strong>$24,860</strong>
-              <em>+12.4%</em>
+          <div className="payment-visual">
+            <div className="payment-success"><i /></div>
+
+            <div className="payment-terminal">
+              <span className="payment-terminal-screen">
+                <i />
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="payment-terminal-slot" />
             </div>
-            <div className="payment-bars">
-              {[38, 62, 46, 78, 58, 92, 74].map((height, index) => (
-                <i key={height + index} style={{ '--payment-bar': `${height}%` }} />
-              ))}
+
+            <div className="payment-card">
+              <i />
+              <span />
             </div>
-            <div className="payment-activity">
-              <span><i />PAY-2048 <b>PAID</b></span>
-              <span><i />PAY-2047 <b>PAID</b></span>
+
+            <div className="payment-receipt">
+              <span />
+              <span />
+              <span />
+              <span />
             </div>
           </div>
         )}
@@ -95,7 +114,7 @@ function ProjectPreview({ type }) {
           </div>
         )}
 
-        {type !== 'payment' && (
+        {type !== 'payment' && type !== 'agent' && (
           <span className="preview-index">{type.slice(0, 2).toUpperCase()}</span>
         )}
       </div>
