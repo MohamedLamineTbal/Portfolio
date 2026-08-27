@@ -9,7 +9,7 @@
     "check:pages": "node scripts/check-pages-build.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && npm run check:pages && gh-pages -d dist"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
