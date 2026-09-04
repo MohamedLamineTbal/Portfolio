@@ -594,7 +594,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  color: var(--project-accent);
+  color: var(--amber);
 }
 
 .project-status i {
