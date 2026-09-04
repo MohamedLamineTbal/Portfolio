@@ -16,6 +16,16 @@ export const portfolioData = {
   ],
   projects: [
     {
+      title: 'AI Contract Risk Checker',
+      year: '2026',
+      description:
+        'An AI-driven contract review system that analyzes uploaded agreements, flags risky or non-compliant clauses, and evaluates them against internal legal policies and previously approved contracts using RAG.',
+      technologies: ['Python', 'LangGraph', 'FastAPI', 'React'],
+      accent: 'rose',
+      preview: 'contract',
+      status: 'In Progress',
+    },
+    {
       title: 'ERP AI Operations Agent',
       year: '2026',
       description:
@@ -40,16 +50,6 @@ export const portfolioData = {
         label: 'GitHub',
         url: 'https://github.com/MohamedLamineTbal/relay',
       },
-    },
-    {
-      title: 'AI Contract Risk Checker',
-      year: '2026',
-      description:
-        'An AI-driven contract review system that analyzes uploaded agreements, flags risky or non-compliant clauses, and evaluates them against internal legal policies and previously approved contracts using RAG.',
-      technologies: ['RAG', 'LLMs', 'Vector Search', 'Policy Retrieval'],
-      accent: 'rose',
-      preview: 'contract',
-      status: 'In Progress',
     },
   ],
   skills: [
