@@ -580,6 +580,21 @@
   color: var(--project-accent);
 }
 
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--project-accent);
+}
+
+.project-status i {
+  width: 0.42rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0.3rem color-mix(in srgb, currentColor 12%, transparent);
+}
+
 .external-arrow {
   display: inline-block;
   color: var(--project-accent);
@@ -688,7 +703,8 @@
 }
 
 .preview--payment .preview-frame,
-.preview--agent .preview-frame {
+.preview--agent .preview-frame,
+.preview--contract .preview-frame {
   inset: 0;
   overflow: visible;
   border: 0;
@@ -697,8 +713,103 @@
 .preview--payment .preview-frame::before,
 .preview--payment .preview-frame::after,
 .preview--agent .preview-frame::before,
-.preview--agent .preview-frame::after {
+.preview--agent .preview-frame::after,
+.preview--contract .preview-frame::before,
+.preview--contract .preview-frame::after {
   display: none;
+}
+
+.contract-visual {
+  position: absolute;
+  inset: clamp(1.2rem, 2.8vw, 2.2rem);
+}
+
+.contract-document {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 8%;
+  width: 52%;
+  height: 82%;
+  padding: 3.6rem 1rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 58%, transparent);
+  background: color-mix(in srgb, var(--project-accent) 7%, var(--bg-card));
+  box-shadow: 0.8rem 1rem 2rem rgba(6, 8, 22, 0.18);
+}
+
+.contract-document svg {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--project-accent);
+}
+
+.contract-document span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 0.85rem;
+  background: color-mix(in srgb, var(--project-accent) 30%, transparent);
+}
+
+.contract-document span:nth-of-type(2) { width: 72%; }
+.contract-document span:nth-of-type(4) { width: 58%; }
+
+.contract-document .contract-risk-line {
+  width: 90%;
+  height: 0.48rem;
+  border-left: 2px solid var(--project-accent);
+  background: color-mix(in srgb, var(--project-accent) 22%, transparent);
+}
+
+.contract-search,
+.contract-policy {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 64%, transparent);
+  border-radius: 50%;
+  color: var(--project-accent);
+  background: color-mix(in srgb, var(--project-accent) 10%, var(--bg-card));
+}
+
+.contract-search {
+  right: 5%;
+  bottom: 9%;
+  width: clamp(3.8rem, 7vw, 5.2rem);
+}
+
+.contract-policy {
+  top: 9%;
+  right: 9%;
+  width: clamp(2.7rem, 5vw, 3.6rem);
+}
+
+.contract-search svg { width: 46%; height: 46%; }
+.contract-policy svg { width: 48%; height: 48%; }
+
+.contract-connector {
+  position: absolute;
+  z-index: 1;
+  right: 19%;
+  width: 28%;
+  height: 1px;
+  background: color-mix(in srgb, var(--project-accent) 42%, transparent);
+  transform-origin: right center;
+}
+
+.contract-connector--one {
+  top: 29%;
+  transform: rotate(-24deg);
+}
+
+.contract-connector--two {
+  bottom: 29%;
+  transform: rotate(28deg);
 }
 
 .erp-map {

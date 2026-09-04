@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { Cog } from 'lucide-react'
+import { Cog, FileText, Search, ShieldAlert } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData.js'
 import AboutProjects from './AboutProjects.jsx'
 
@@ -9,7 +9,7 @@ function ProjectPreview({ type }) {
   return (
     <div className={`project-preview preview--${type}`} aria-hidden="true">
       <div className="preview-frame">
-        {type !== 'agent' && type !== 'payment' && (
+        {type !== 'agent' && type !== 'payment' && type !== 'contract' && (
           <span className="preview-kicker">
             {`SYSTEM / 0${type.length}`}
           </span>
@@ -47,6 +47,26 @@ function ProjectPreview({ type }) {
               <span />
               <span />
             </div>
+          </div>
+        )}
+
+        {type === 'contract' && (
+          <div className="contract-visual">
+            <div className="contract-document">
+              <FileText strokeWidth={1.35} />
+              <span />
+              <span />
+              <span className="contract-risk-line" />
+              <span />
+            </div>
+            <div className="contract-search">
+              <Search strokeWidth={1.6} />
+            </div>
+            <div className="contract-policy">
+              <ShieldAlert strokeWidth={1.5} />
+            </div>
+            <i className="contract-connector contract-connector--one" />
+            <i className="contract-connector contract-connector--two" />
           </div>
         )}
 
@@ -114,7 +134,7 @@ function ProjectPreview({ type }) {
           </div>
         )}
 
-        {type !== 'payment' && type !== 'agent' && (
+        {type !== 'payment' && type !== 'agent' && type !== 'contract' && (
           <span className="preview-index">{type.slice(0, 2).toUpperCase()}</span>
         )}
       </div>
@@ -191,15 +211,22 @@ function Projects() {
                 <div className="project-details">
                   <div className="project-meta">
                     <span className="project-meta-year">{project.year}</span>
-                    <a
-                      href={project.link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${project.link.label} for ${project.title} (opens in a new tab)`}
-                    >
-                      {project.link.label}
-                      <span className="external-arrow" aria-hidden="true">↗</span>
-                    </a>
+                    {project.status ? (
+                      <span className="project-status" aria-label={`Status: ${project.status}`}>
+                        <i aria-hidden="true" />
+                        {project.status}
+                      </span>
+                    ) : (
+                      <a
+                        href={project.link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.link.label} for ${project.title} (opens in a new tab)`}
+                      >
+                        {project.link.label}
+                        <span className="external-arrow" aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
