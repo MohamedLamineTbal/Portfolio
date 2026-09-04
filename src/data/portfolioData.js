@@ -37,6 +37,7 @@ export const portfolioData = {
         label: 'GitHub',
         url: 'https://github.com/MohamedLamineTbal/AI-ERP-Operations-Agent',
       },
+      status: 'In Progress',
     },
     {
       title: 'Relay',
@@ -50,6 +51,7 @@ export const portfolioData = {
         label: 'GitHub',
         url: 'https://github.com/MohamedLamineTbal/relay',
       },
+      status: 'In Progress',
     },
   ],
   skills: [

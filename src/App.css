@@ -569,15 +569,25 @@
   display: none;
 }
 
+.project-meta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1.2rem;
+}
+
 .project-meta a {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  transition: color 180ms ease;
+  color: var(--amber);
+  transition: opacity 180ms ease;
 }
 
 .project-meta a:hover {
-  color: var(--project-accent);
+  color: var(--amber);
+  opacity: 0.72;
 }
 
 .project-status {
@@ -597,7 +607,7 @@
 
 .external-arrow {
   display: inline-block;
-  color: var(--project-accent);
+  color: var(--amber);
   font-size: 1rem;
   transition: transform 180ms ease;
 }

@@ -211,22 +211,25 @@ function Projects() {
                 <div className="project-details">
                   <div className="project-meta">
                     <span className="project-meta-year">{project.year}</span>
-                    {project.status ? (
-                      <span className="project-status" aria-label={`Status: ${project.status}`}>
-                        <i aria-hidden="true" />
-                        {project.status}
-                      </span>
-                    ) : (
-                      <a
-                        href={project.link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${project.link.label} for ${project.title} (opens in a new tab)`}
-                      >
-                        {project.link.label}
-                        <span className="external-arrow" aria-hidden="true">↗</span>
-                      </a>
-                    )}
+                    <div className="project-meta-actions">
+                      {project.link && (
+                        <a
+                          href={project.link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${project.link.label} for ${project.title} (opens in a new tab)`}
+                        >
+                          {project.link.label}
+                          <span className="external-arrow" aria-hidden="true">↗</span>
+                        </a>
+                      )}
+                      {project.status && (
+                        <span className="project-status" aria-label={`Status: ${project.status}`}>
+                          <i aria-hidden="true" />
+                          {project.status}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
